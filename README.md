@@ -53,12 +53,17 @@ const CONFIG = {
 
 ## 🔧 Technische Details
 
-- **Version**: 1.2.1
+- **Version**: 1.2.2
 - **Autor**: Stonehiller Industries
 - **Namespace**: http://tampermonkey.net/
 - **Kompatibilität**: Moderne Browser mit Tampermonkey
 
 ## 📝 Changelog
+
+### Version 1.2.2
+- **Verbessertes Set-Parsing**: Erkennt jetzt auch Sets ohne Links (nur als Text)
+- **Update-Links**: Automatische Updates über GitHub
+- **Debug-Logging**: Erweiterte Debug-Ausgaben für bessere Fehlerdiagnose
 
 ### Version 1.2.1
 - Initiale Veröffentlichung

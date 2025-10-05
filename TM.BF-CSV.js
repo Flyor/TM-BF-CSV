@@ -1,20 +1,22 @@
 // ==UserScript==
 // @name         Brickfanatics EOL CSV Downloader
 // @namespace    http://tampermonkey.net/
-// @version      1.2.1
+// @version      1.2.2
 // @description  Extrahiert EOL-Daten von Brickfanatics.com und lädt sie als CSV herunter
 // @author       Stonehiller Industries
 // @match        https://brickfanatics.com/every-lego-set-retiring-this-year-and-beyond/*
 // @match        https://www.brickfanatics.com/every-lego-set-retiring-this-year-and-beyond/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=brickfanatics.com
 // @grant        none
+// @updateURL    https://github.com/Flyor/TM-BF-CSV/raw/main/TM.BF-CSV.js
+// @downloadURL  https://github.com/Flyor/TM-BF-CSV/raw/main/TM.BF-CSV.js
 // ==/UserScript==
 
 (function() {
     'use strict';
 
     // ===== VERSION =====
-    const VERSION = '1.2.1';
+    const VERSION = '1.2.2';
     
     // ===== UTILITY FUNCTIONS =====
     
@@ -157,39 +159,50 @@
                             rows.forEach(row => {
                                 const cells = row.querySelectorAll('td');
                                 if (cells.length > 0) {
-                                    // Erste Zelle enthält den Set-Namen (als Link)
+                                    // Erste Zelle enthält den Set-Namen (als Link ODER als Text)
                                     const firstCell = cells[0];
                                     const link = firstCell.querySelector('a');
                                     
+                                    let setText = '';
                                     if (link) {
-                                        const linkText = link.textContent.trim();
-                                        const match = linkText.match(/^(\d+)\s+(.+)$/);
+                                        // Set als Link
+                                        setText = link.textContent.trim();
+                                        console.debug(`[BF-CSV2] Link gefunden: "${setText}"`);
+                                    } else {
+                                        // Set als reiner Text
+                                        setText = firstCell.textContent.trim();
+                                        console.debug(`[BF-CSV2] Text gefunden: "${setText}"`);
+                                    }
+                                    
+                                    const match = setText.match(/^(\d+)\s+(.+)$/);
+                                    
+                                    if (match) {
+                                        const setNum = match[1];
+                                        const setName = match[2];
+                                        console.debug(`[BF-CSV2] Set geparst: ${setNum} - ${setName}`);
                                         
-                                        if (match) {
-                                            const setNum = match[1];
-                                            const setName = match[2];
+                                        // Prüfe ob Set bereits existiert (vermeide Duplikate)
+                                        const existingSet = setsByYear[year].find(set => set.num === setNum);
+                                        if (!existingSet) {
+                                            // Füge zu Jahr-Liste hinzu
+                                            setsByYear[year].push({
+                                                num: setNum,
+                                                name: setName,
+                                                eol: year
+                                            });
                                             
-                                            // Prüfe ob Set bereits existiert (vermeide Duplikate)
-                                            const existingSet = setsByYear[year].find(set => set.num === setNum);
-                                            if (!existingSet) {
-                                                // Füge zu Jahr-Liste hinzu
-                                                setsByYear[year].push({
-                                                    num: setNum,
+                                            // Füge zu Master-Liste hinzu (nur frühestes Jahr)
+                                            if (!masterSets[setNum] || year < masterSets[setNum].eol) {
+                                                masterSets[setNum] = {
                                                     name: setName,
                                                     eol: year
-                                                });
-                                                
-                                                // Füge zu Master-Liste hinzu (nur frühestes Jahr)
-                                                if (!masterSets[setNum] || year < masterSets[setNum].eol) {
-                                                    masterSets[setNum] = {
-                                                        name: setName,
-                                                        eol: year
-                                                    };
-                                                }
-                                                
-                                                console.debug(`[BF-CSV2] Set hinzugefügt: ${setNum} ${setName}`);
+                                                };
                                             }
+                                            
+                                            console.debug(`[BF-CSV2] Set hinzugefügt: ${setNum} ${setName}`);
                                         }
+                                    } else {
+                                        console.debug(`[BF-CSV2] Kein Set-Pattern gefunden in: "${setText}"`);
                                     }
                                 }
                             });
