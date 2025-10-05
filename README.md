@@ -16,7 +16,7 @@ Ein Tampermonkey-Userscript zum automatischen Download von EOL (End of Life) LEG
 
 2. **Script installieren**: 
    - **Automatisch**: Klicke auf [Installationslink](https://flyor.github.io/TM-BF-CSV/) (Tampermonkey öffnet sich automatisch)
-   - **Manuell**: Öffne die Datei `TM.BF-CSV.js`, kopiere den Inhalt und füge ihn in Tampermonkey ein
+   - **Manuell**: Öffne die Datei `TM.BF-CSV.user.js`, kopiere den Inhalt und füge ihn in Tampermonkey ein
 
 3. **Verwendung**:
    - Gehe zu [Brickfanatics EOL-Seite](https://brickfanatics.com/every-lego-set-retiring-this-year-and-beyond/)

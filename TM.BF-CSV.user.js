@@ -8,8 +8,8 @@
 // @match        https://www.brickfanatics.com/every-lego-set-retiring-this-year-and-beyond/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=brickfanatics.com
 // @grant        none
-// @updateURL    https://flyor.github.io/TM-BF-CSV/TM.BF-CSV.js
-// @downloadURL  https://flyor.github.io/TM-BF-CSV/TM.BF-CSV.js
+// @updateURL    https://flyor.github.io/TM-BF-CSV/TM.BF-CSV.user.js
+// @downloadURL  https://flyor.github.io/TM-BF-CSV/TM.BF-CSV.user.js
 // ==/UserScript==
 
 (function() {
