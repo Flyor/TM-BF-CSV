@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧱 Brickfanatics EOL CSV Downloader - Installation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .install-button {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        .install-button:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #10b981;
+        }
+        .warning-box {
+            background: rgba(245, 158, 11, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #f59e0b;
+        }
+        .version {
+            text-align: center;
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧱 Brickfanatics EOL CSV Downloader</h1>
+        <div class="version">Version 1.2.2</div>
+        
+        <div class="info-box">
+            <h3>📋 Beschreibung</h3>
+            <p>Ein Tampermonkey-Userscript zum automatischen Download von EOL (End of Life) LEGO-Set Daten von Brickfanatics.com als CSV-Datei.</p>
+        </div>
+
+        <a href="TM.BF-CSV.js" class="install-button" id="installButton">
+            📥 Jetzt installieren
+        </a>
+
+        <div class="warning-box">
+            <h3>⚠️ Voraussetzungen</h3>
+            <p><strong>Tampermonkey erforderlich:</strong> Falls noch nicht installiert, lade die <a href="https://www.tampermonkey.net/" style="color: #fbbf24;">Tampermonkey Browser-Extension</a> herunter.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Automatische Extraktion</h3>
+                <p>Extrahiert alle EOL-Daten von der Brickfanatics-Seite</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📥</div>
+                <h3>CSV-Export</h3>
+                <p>Lädt die Daten als strukturierte CSV-Datei herunter</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔧</div>
+                <h3>Verbessertes Parsing</h3>
+                <p>Erkennt Sets mit und ohne Links</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔄</div>
+                <h3>Auto-Updates</h3>
+                <p>Automatische Updates über GitHub</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>🚀 Verwendung</h3>
+            <ol>
+                <li>Klicke auf "Jetzt installieren" (Tampermonkey öffnet sich automatisch)</li>
+                <li>Bestätige die Installation</li>
+                <li>Gehe zu <a href="https://brickfanatics.com/every-lego-set-retiring-this-year-and-beyond/" style="color: #60a5fa;">Brickfanatics EOL-Seite</a></li>
+                <li>Das Script erstellt automatisch ein Button-Panel</li>
+                <li>Klicke auf "📥 CSV Download"</li>
+            </ol>
+        </div>
+
+        <div class="info-box">
+            <h3>📊 CSV-Format</h3>
+            <p>Die generierte CSV-Datei enthält folgende Spalten:</p>
+            <ul>
+                <li><strong>EOL Jahr:</strong> Das Jahr, in dem das Set ausläuft</li>
+                <li><strong>Set Nummer:</strong> Die offizielle LEGO-Set-Nummer</li>
+                <li><strong>Set Name:</strong> Der Name des LEGO-Sets</li>
+                <li><strong>Datum Export:</strong> Zeitstempel des Exports</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>🔗 Links</h3>
+            <p>
+                <strong>GitHub Repository:</strong> <a href="https://github.com/Flyor/TM-BF-CSV" style="color: #60a5fa;">https://github.com/Flyor/TM-BF-CSV</a><br>
+                <strong>Brickfanatics EOL-Seite:</strong> <a href="https://brickfanatics.com/every-lego-set-retiring-this-year-and-beyond/" style="color: #60a5fa;">https://brickfanatics.com/every-lego-set-retiring-this-year-and-beyond/</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Fallback für Browser ohne Tampermonkey
+        document.getElementById('installButton').addEventListener('click', function(e) {
+            // Prüfe ob Tampermonkey verfügbar ist
+            if (typeof GM_info === 'undefined') {
+                // Tampermonkey nicht verfügbar - zeige Hinweis
+                setTimeout(() => {
+                    alert('Tampermonkey nicht gefunden!\n\nBitte installiere zuerst die Tampermonkey Browser-Extension:\nhttps://www.tampermonkey.net/');
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
