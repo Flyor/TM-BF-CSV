@@ -1,0 +1,7 @@
+# MIME-Type für .user.js Dateien
+AddType application/javascript .user.js
+
+# CORS Headers für Tampermonkey
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type"
